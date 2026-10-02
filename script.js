@@ -1,5 +1,6 @@
 // 1. HTML elements ko pakadna
 const input = document.getElementById("taskInput");
+const prioritySelect = document.getElementById("prioritySelect");
 const addBtn = document.getElementById("addBtn");
 const list = document.getElementById("taskList");
 const count = document.getElementById("count");
@@ -35,7 +36,8 @@ function render() {
         if (task.done) li.className = "done";
 
         const span = document.createElement("span");
-        span.textContent = task.text;
+      span.textContent = task.text + " (" + (task.priority || "Low") + ")";
+      if (task.priority === "High") span.style.color = "red";
         span.onclick = function () {          // click par done / not done
             tasks[index].done = !tasks[index].done;
             saveTasks();
@@ -62,7 +64,7 @@ function render() {
 function addTask() {
     const text = input.value.trim();
     if (text === "") return;                // khali task nahi
-    tasks.push({ text: text, done: false });
+   tasks.push({ text: text, done: false, priority: prioritySelect.value });
     input.value = "";
     saveTasks();
     render();

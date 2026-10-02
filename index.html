@@ -7,11 +7,16 @@
   <title>Todo List - localStorage Project</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div class="box">
     <h1>My Todo List</h1>
     <div class="row">
       <input id="taskInput" type="text" placeholder="Write a task..." />
+      <select id="prioritySelect">
+        <option value="High">High</option>
+        <option value="Low">Low</option>
+      </select>
       <button id="addBtn">Add</button>
     </div>
     <ul id="taskList"></ul>
